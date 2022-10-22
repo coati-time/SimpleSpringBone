@@ -1,0 +1,56 @@
+[gd_scene load_steps=2 format=3 uid="uid://qo66jqkg34sd"]
+
+[ext_resource type="PackedScene" uid="uid://q3fc2djsxbe7" path="res://example/rope_model.tscn" id="1_ncn75"]
+
+[node name="Main" type="Node3D"]
+
+[node name="Camera3d" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.18619, 6.99985)
+
+[node name="DirectionalLight3d" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.744475, 4.65784e-08, -0.667651, 0.383864, 0.81819, 0.428034, 0.546265, -0.574948, 0.609122, 0, 8.85813, 7.43115)
+
+[node name="Button01" type="Button" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -162.0
+offset_top = 34.0
+offset_right = -64.0
+offset_bottom = 72.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Test 01"
+
+[node name="Button02" type="Button" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -162.0
+offset_top = 82.0
+offset_right = -64.0
+offset_bottom = 120.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Test 02"
+
+[node name="Button03" type="Button" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -162.0
+offset_top = 130.0
+offset_right = -64.0
+offset_bottom = 168.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Test 03"
+
+[node name="rope_model" parent="." instance=ExtResource("1_ncn75")]
+
+[connection signal="pressed" from="Button01" to="rope_model" method="_on_button_01_pressed"]
+[connection signal="pressed" from="Button02" to="rope_model" method="_on_button_02_pressed"]
+[connection signal="pressed" from="Button03" to="rope_model" method="_on_button_03_pressed"]

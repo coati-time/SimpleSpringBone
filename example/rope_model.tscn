@@ -1,0 +1,151 @@
+[gd_scene load_steps=8 format=3 uid="uid://q3fc2djsxbe7"]
+
+[ext_resource type="PackedScene" uid="uid://cmefwpjjdhevg" path="res://example/rope_model.glb" id="1_vdsbq"]
+[ext_resource type="Script" path="res://addons/simple_spring_bone/springbone.gd" id="2_kcuh4"]
+[ext_resource type="Script" path="res://example/rope_model.gd" id="2_ne7xb"]
+
+[sub_resource type="Animation" id="Animation_snlax"]
+resource_name = "test02"
+length = 3.0
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 6, 0, 3, 1, 0, 6, 0)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -1, 0, 0, 0, 0.1, 1, -0.996, 0.087, 0, 0, 0.3, 1, -0.996, -0.087, 0, 0, 0.5, 1, -0.996, 0.087, 0, 0, 0.7, 1, -0.996, -0.087, 0, 0, 0.8, 1, -1, 0, 0, 0)
+
+[sub_resource type="Animation" id="Animation_uftve"]
+resource_name = "test"
+length = 3.0
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 6, 0, 0.1, 1, 1, 6, 0, 0.3, 1, -1, 6, 0, 0.5, 1, 1, 6, 0, 0.7, 1, -1, 6, 0, 0.8, 1, 0, 6, 0)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -1, 0, 0, 0)
+
+[sub_resource type="Animation" id="Animation_2gad2"]
+resource_name = "test03"
+length = 4.0
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 6, 0, 0.2, 1, 2, 6, 0, 0.4, 1, 0, 6, 2, 0.6, 1, -2, 6, 0, 0.8, 1, 0, 6, -2, 1.2, 1, 3, 6, 0, 1.5, 1, 0, 6, 3, 1.8, 1, -3, 6, 0, 2.1, 1, 0, 6, -3, 2.9, 1, 0, 6, 0)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -1, 0, 0, 0)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e6wnc"]
+_data = {
+"test01": SubResource("Animation_snlax"),
+"test02": SubResource("Animation_uftve"),
+"test03": SubResource("Animation_2gad2")
+}
+
+[node name="rope_model" instance=ExtResource("1_vdsbq")]
+script = ExtResource("2_ne7xb")
+
+[node name="Armature" parent="." index="0"]
+transform = Transform3D(-0.999988, -0.00479449, 0, 0.00479449, -0.999988, 0, 0, 0, 1, 0, 6, 0)
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/0/rotation = Quaternion(-1.20692e-14, 6.62959e-13, -1.11214e-05, 0.883084)
+bones/1/rotation = Quaternion(-5.49141e-10, 2.64671e-12, -1.90867e-05, 0.883074)
+bones/2/rotation = Quaternion(-2.72012e-11, 1.31206e-13, 8.62038e-07, 0.88307)
+bones/3/rotation = Quaternion(1.82083e-11, -8.93349e-14, 6.27509e-07, 0.883074)
+bones/4/rotation = Quaternion(-1.06598e-09, 5.10026e-12, 3.55007e-05, 0.883076)
+bones/5/rotation = Quaternion(1.71941e-08, 2.68333e-10, 1.46104e-05, 0.883106)
+bones/6/rotation = Quaternion(-2.63901e-07, -1.37979e-08, -1.49388e-05, 0.883396)
+
+[node name="SpringBone1" type="Node3D" parent="Armature/Skeleton3D" index="1"]
+transform = Transform3D(1, -3.27826e-07, -1.95399e-14, 1.41608e-06, 1, 5.96046e-08, 0, -5.96046e-08, 1, 2.62558e-05, 0.743514, -4.45912e-08)
+script = ExtResource("2_kcuh4")
+active = true
+target_bone = "Bone01"
+spring_k = 19.0
+mass = 7.0
+damping = 7.0
+
+[node name="SpringBone2" type="Node3D" parent="Armature/Skeleton3D" index="2"]
+transform = Transform3D(1, -3.38536e-07, -2.01783e-14, 1.41608e-06, 1, 5.96046e-08, 0, -5.96046e-08, 1, 8.27461e-05, 1.49158, 1.29638e-09)
+script = ExtResource("2_kcuh4")
+active = true
+target_bone = "Bone02"
+spring_k = 19.0
+mass = 6.0
+damping = 7.0
+
+[node name="SpringBone3" type="Node3D" parent="Armature/Skeleton3D" index="3"]
+transform = Transform3D(1, -3.3807e-07, -8.41827e-14, 1.41608e-06, 1, 5.96046e-08, 0, -5.96046e-08, 1, 0.000119168, 2.23967, -1.79662e-09)
+script = ExtResource("2_kcuh4")
+active = true
+target_bone = "Bone03"
+spring_k = 19.0
+mass = 5.0
+damping = 7.0
+
+[node name="SpringBone4" type="Node3D" parent="Armature/Skeleton3D" index="4"]
+transform = Transform3D(1, -3.37604e-07, 0, 1.41608e-06, 1, 5.96047e-08, 0, -5.96046e-08, 1, 0.000165284, 2.98781, -3.01148e-09)
+script = ExtResource("2_kcuh4")
+active = true
+target_bone = "Bone04"
+spring_k = 19.0
+mass = 4.0
+damping = 7.0
+
+[node name="SpringBone5" type="Node3D" parent="Armature/Skeleton3D" index="5"]
+transform = Transform3D(1, -1.41608e-06, -8.41827e-14, 1.41608e-06, 1, 5.96046e-08, 0, -5.96046e-08, 1, -0.000318786, 3.73593, 1.15525e-08)
+script = ExtResource("2_kcuh4")
+active = true
+target_bone = "Bone05"
+spring_k = 19.0
+mass = 3.0
+damping = 7.0
+
+[node name="SpringBone6" type="Node3D" parent="Armature/Skeleton3D" index="6"]
+transform = Transform3D(1, -3.37139e-07, -8.41827e-14, 1.41608e-06, 1, 5.96046e-08, 0, -5.96046e-08, 1, -0.0155037, 4.48394, -4.76734e-07)
+script = ExtResource("2_kcuh4")
+active = true
+target_bone = "Bone06"
+spring_k = 19.0
+mass = 2.0
+damping = 7.0
+
+[node name="SpringBone7" type="Node3D" parent="Armature/Skeleton3D" index="7"]
+transform = Transform3D(1, -1.41608e-06, -2.01783e-14, 1.41608e-06, 1, 5.96046e-08, 0, -5.96046e-08, 1, -0.0413175, 5.23179, 2.21094e-05)
+script = ExtResource("2_kcuh4")
+active = true
+target_bone = "Bone07"
+spring_k = 19.0
+damping = 7.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+unique_name_in_owner = true
+root_node = NodePath("../Armature")
+autoplay = "test01"
+libraries = {
+"": SubResource("AnimationLibrary_e6wnc")
+}

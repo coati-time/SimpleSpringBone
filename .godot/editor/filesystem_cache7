@@ -1,0 +1,17 @@
+0b7126e0c6e86d3ec295a72f5aa6e0bd
+::res://::1666426324
+README.md::TextFile::-1::1666426166::0::1::::<><>::
+::res://addons/::1666424424
+::res://addons/simple_spring_bone/::1666424454
+custom_node.gd::GDScript::-1::1666424424::0::1::::<>EditorPlugin<>::
+icon.svg::CompressedTexture2D::3275139254975393055::1666424424::1666426325::1::::<><>::
+plugin.cfg::TextFile::-1::1666424424::0::1::::<><>::
+springbone.gd::GDScript::-1::1666424424::0::1::::<>Node3D<>::
+::res://example/::1666424848
+example_fig.png::CompressedTexture2D::4390763958476014337::1666424424::1666426325::1::::<><>::
+main.tscn::PackedScene::1153860871042696027::1666424847::0::1::::<><>::uid://q3fc2djsxbe7
+ng.png::CompressedTexture2D::7548211756402217480::1666424424::1666426325::1::::<><>::
+ok.png::CompressedTexture2D::8860804997255131699::1666424424::1666426325::1::::<><>::
+rope_model.gd::GDScript::-1::1666424424::0::1::::<>Node3D<>::
+rope_model.glb::PackedScene::5623708676655270056::1666424424::1666426326::1::::<><>::
+rope_model.tscn::PackedScene::1181132655072579300::1666424847::0::1::::<><>::uid://cmefwpjjdhevg<>res://addons/simple_spring_bone/springbone.gd<>res://example/rope_model.gd
