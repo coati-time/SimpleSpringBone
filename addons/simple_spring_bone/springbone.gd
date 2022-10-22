@@ -75,10 +75,12 @@ func act_spring(delta):
 
 # Orient the parent bone toward self(SpringBone).
 func look_at_spring_bone(parent_pos:Vector3):
+	var p0_in_object = pos0 * skeleton.global_transform.inverse()
+	var gtf_in_object = global_transform.origin * skeleton.global_transform.inverse()
 	# 1) Vector from ParentBone to pos0.
-	var arc_from = pos0 - parent_pos
+	var arc_from = p0_in_object - parent_pos
 	# 2) Vector from ParentBone to self.
-	var arc_to = global_transform.origin - parent_pos
+	var arc_to = gtf_in_object - parent_pos
 	# Get the Quaternion of the angle 1) and 2) and update ParentBone with that Quatertion.
 	var quat_from_to = Quaternion(arc_from,arc_to)
 	skeleton.set_bone_pose_rotation(parent_bone_id,quat_from_to)
@@ -138,8 +140,8 @@ func _process(delta):
 	var bone_transf_world = skeleton.global_transform * bone_transf_obj		# 3)
 
 	# Get the global Transform3D of the parent bone.
-	var parent_transf_world = skeleton.global_transform * skeleton.get_bone_global_pose(parent_bone_id)
-
+	var parent_transf_object = skeleton.get_bone_global_pose(parent_bone_id)
+	
 	# When inactive SpringBone only follows the global position of TargetBone.
 	if !active_flag:
 		set_global_transform(bone_transf_world)
@@ -153,4 +155,4 @@ func _process(delta):
 	act_spring(delta)
 	
 	# Orient the parent bone toward the self(SpringBone).
-	look_at_spring_bone(parent_transf_world.origin)
+	look_at_spring_bone(parent_transf_object.origin)
